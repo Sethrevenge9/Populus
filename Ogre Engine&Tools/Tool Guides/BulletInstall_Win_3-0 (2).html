@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>BulletInstall_Win.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<!--
+0.1 Initial version (Feb 2019)
+0.2 Updated to make more 'fuss' about the critical build settings required for Bullet.
+0.3 Found a missing build setting added (post seminar). 
+1.0 Updated to reflect move to Ogre3d 1.12 (also pulled latest bullet.) (Dec 2019). 
+1.1 Still finding typos. 
+2.0 Moving to Ogre1.3 and bullet, I need to split this in to a Windows and Linux version asked for by Ian Smith. 
+2.1 Split version, now this one is Windows only. 
+2.2 Moved big list of options to the end. Slimmed down the settings, just hope they are correct. 
+-->
+<h1 id="bullet">Bullet</h1>
+<h2 id="why-are-we-using-bullet">Why are we using Bullet?</h2>
+<p>TODO - write this.</p>
+<h1 id="cloning-the-bullet-source">Cloning the Bullet Source</h1>
+<p>Using the Linux commandline or a suitable client on Windows (e.g. gitbash) clone the bullet repository to your local machine.</p>
+<pre class="hljs"><code><div>&gt; git <span class="hljs-built_in">clone</span> https://github.com/bulletphysics/bullet3.git
+</div></code></pre>
+<h2 id="versions">Versions</h2>
+<p>Due to the nature of the Bullet project (open source, active, being developed,) it's difficult to keep this guide and the examples in sync with the current version of Bulet available on GitHub. These notes are written against <strong>3.2.5</strong> please checkout that tag before continuing!</p>
+<pre class="hljs"><code><div>&gt; git checkout tags/3.25
+</div></code></pre>
+<h1 id="using-cmake-to-generate-a-compilation-environment">Using CMake to Generate a Compilation Environment</h1>
+<p>Make sure CMake is pointing at the top level of the <strong>bullet3</strong> repository (where the top level CMakeLists file is,) you'll need to set the location of the build files to a build directory within this one.  So if your path is <code>C:\MyStuff\bullet3</code> the path for your build files will be <code>C:\MyStuff\bullet3\build</code>, some of the steps which follow work on the basis that you have this layout - please don't deviate.</p>
+<p>Open the Cmake Gui and set the parameters as shown in the tables below, you may have to amend the paths to match your repo location.  Note the <strong>CMAKE_INSTALL_PREFIX</strong> this is where we are putting our compiled libraries and the header files which make up the Bullet library.  I've changed this to make this more consistent with Ogre3D, in that I'm writing the output to an <code>sdk</code> directory.</p>
+<!--  Replaced with a table this year. 
+![](bulletInstall-images/bullet3-cmake1.PNG)
+
+Sorry ... too big for one screenshot!
+
+![](bulletInstall-images/bullet3-cmake2.PNG)
+-->
+<h3 id="cmake-build-entries">CMake Build Entries</h3>
+<p>Please note, you won't need to set all of these.   I'm pretty sure it's just the ones which are in bold, please make to set:</p>
+<ul>
+<li><code>CMAKE_INSTALL_PREFIX</code></li>
+</ul>
+<p>These should set automatically ...</p>
+<ul>
+<li><code>LIBRARY_OUTPUT_PATH</code></li>
+<li><code>INCLUDE_INSTALL_DIRECTORY</code></li>
+</ul>
+<p>Are set correctly, the path should end inside the clone of bullet in the build directory.</p>
+<p>You'll also need to set the flags for:</p>
+<ul>
+<li><code>INSTALL_CMAKE_FILES</code></li>
+<li><code>INSTALL_LIBS</code></li>
+<li><code>INSTALL_EXTRA_LIBS</code></li>
+<li><code>USE_MSVC_RUNTIME_LIBRARY_DLL</code></li>
+</ul>
+<p>Note that some setting are hidden until they are required, set:
+<strong>The CMAKE Group</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Group</th>
+<th style="text-align:left">Key</th>
+<th style="text-align:left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Install path prefix, prepended onto install directories.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left"><strong>CMAKE_INSTALL_PREFIX</strong></td>
+<td style="text-align:left"><code>&lt;path-to-bullet&gt;/build/sdk</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>The Ungrouped Group</strong></p>
+<p><strong>NOTE:</strong> I've included these but I'm sure these are the defaults and there's nothing to set!</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Group</th>
+<th style="text-align:left">Key</th>
+<th style="text-align:left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">The subdirectory to the header prefix</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>INCLUDE_INSTALL_DIR</strong></td>
+<td style="text-align:left"><code>include/bullet</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Single output directory for building all libraries.</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>LIBRARY_OUTPUT_PATH</strong></td>
+<td style="text-align:left"><code>&lt;path-to-bullet&gt;/bullet3/build/lib</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>The INSTALL Group</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Group</th>
+<th style="text-align:left">Key</th>
+<th style="text-align:left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Install generated CMake files</td>
+<td style="text-align:left">INSTALL</td>
+<td style="text-align:left"><strong>INSTALL_CMAKE_FILES</strong></td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Set when you want extra libraries installed</td>
+<td style="text-align:left">INSTALL</td>
+<td style="text-align:left"><strong>INSTALL_EXTRA_LIBS</strong></td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Set when you want to install libraries</td>
+<td style="text-align:left">INSTALL</td>
+<td style="text-align:left"><strong>INSTALL_LIBS</strong></td>
+<td style="text-align:left">ON</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The USE Group</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Group</th>
+<th style="text-align:left">Key</th>
+<th style="text-align:left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Use MSVC Runtime Library DLL (/MD or /MDd)</td>
+<td style="text-align:left">USE</td>
+<td style="text-align:left"><strong>USE_MSVC_RUNTIME_LIBRARY_DLL</strong></td>
+<td style="text-align:left">ON</td>
+</tr>
+</tbody>
+</table>
+<p>Now we <strong>Configure</strong>, <strong>Generate</strong> and <strong>Open Project</strong> as we've done previously.</p>
+<p>Note: I installed Bullet on Windows and took a screen shot (above) of the settings, I've tried to note all the changes. Please double check your final config. looks just like the one above.</p>
+<h1 id="building-and-installing">Building and Installing</h1>
+<p>We build the project in the same way we would for any other project in our build environment. One notable difference is we must build the <strong>install</strong> target, this copies the files to another location from which they can run.  This will be familiar to those of you with Mac, Linux or Unix machines at home who have installed software from source.  There is a nice explanation of this <a href="https://robots.thoughtbot.com/the-magic-behind-configure-make-make-install">here</a> anyone would like to know more.</p>
+<p>Now its simply a question of opening visual studio building each of the configurations:</p>
+<ul>
+<li><s>Debug</s> (Not required this year?)</li>
+<li>Release</li>
+<li>Release_withdebuginfo <!--TODO check this --></li>
+</ul>
+<p>We'll be linking our project against one or other of these (probably <strong>RelWithDebInfo</strong>), essentially they have to match i.e. if your compiling a <strong>Release</strong> version of your game (which uses Bullet) you'll need the <strong>Release</strong> version.  The issue with this is that the Debug version has a lot of extras we probably don't need, so release with debug information provides us with a release build with some of the debugging information (a sort of halfway house).</p>
+<p>After each build we <strong>build the install target</strong>, which copies them to a directory.  If you followed the instructions this is the <code>sdk</code> directory within the build directory.  This is a convention I've adopted from Ogre for consistency.</p>
+<p><strong>NOTE</strong>: You MUST compile and install both <strong>Release</strong> and <strong>RelWithDebInfo</strong> while we'll probably only use the latter the cmake script which looks for the installed version of Bullet looks for the release library.</p>
+<h1 id="for-debugging-only">For Debugging Only</h1>
+<p><strong>The Ungrouped Group</strong></p>
+<p>The categorisation relies on a naming convention and some flags have yet to be updated to meet this.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Group</th>
+<th style="text-align:left">Key</th>
+<th style="text-align:left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Use VHACD in BulletRobotics and pybullet</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">ENABLE_VHACD</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Single output directory for building all executables.</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">EXECUTABLE_OUTPUT_PATH</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>The subdirectory to the header prefix</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>INCLUDE_INSTALL_DIR</strong></td>
+<td style="text-align:left"><strong>include/bullet</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Single output directory for building all libraries.</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>LIBRARY_OUTPUT_PATH</strong></td>
+<td style="text-align:left"><strong>&lt;where-cloned-bullet&gt;/bullet3/build/lib</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">Library directory name</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">LIB_DESTINATION</td>
+<td style="text-align:left">lib</td>
+</tr>
+<tr>
+<td style="text-align:left">Define suffix of directory name (32/64)</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">LIB_SUFFIX</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Build Bullet 2 libraries with mutex locking around certain operations <br> (required for multi-threading)</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">BULLET2_MULTITHREADING</td>
+<td style="text-align:left">OFF</td>
+</tr>
+<tr>
+<td style="text-align:left">Clamp rigid bodies' velocity to this value, if larger than zero.<br> Useful to prevent floating point errors or in general runaway<br> velocities in complex scenarios</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">CLAMP_VELOCITIES</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">Base directory for pkgconfig files</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">PKGCONFIG_INSTALL_PREFIX</td>
+<td style="text-align:left">lib/pkgconfig/</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>The BUILD Group</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Group</th>
+<th style="text-align:left">Key</th>
+<th style="text-align:left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Set when you want to build the Bullet 2 demos</td>
+<td style="text-align:left">BUILD</td>
+<td style="text-align:left">BUILD_BULLET2_DEMOS</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Set when you want to build Bullet 3</td>
+<td style="text-align:left">BUILD</td>
+<td style="text-align:left">BUILD_BULLET3</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Build BulletRobotics extra module, only applied when BUILD_EXTRAS is ON</td>
+<td style="text-align:left">BUILD</td>
+<td style="text-align:left">BUILD_BULLET_ROBOTICS_EXTRA</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Build BulletRoboticsGUI extra module, only applied when BUILD_EXTRAS <br> is ON</td>
+<td style="text-align:left">BUILD</td>
+<td style="text-align:left">BUILD_BULLET_ROBOTICS_GUI_EXTRA</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Set when you want to build apps with enet TCP networking support</td>
+<td style="text-align:left">BUILD</td>
+<td style="text-align:left">BUILD_CLSOCKET</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Build ConvexDecomposition extra module, only applied when BUILD_EXTRAS <br> is ON</td>
+<td style="text-align:left">BUILD</td>
+<td style="text-align:left">BUILD_CONVEX_DECOMPOSITION_EXTRA</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Build original Bullet CPU examples</td>
+<td style="text-align:left">BUILD</td>
+<td style="text-align:left">BUILD_CPU_DEMOS</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Set when you want to build apps with enet UDP networking support</td>
+<td style="text-align:left">BUILD</td>
+<td style="text-align:left">BUILD_ENET</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Set when you want to build the extras</td>
+<td style="text-align:left">BUILD</td>
+<td style="text-align:left">BUILD_EXTRAS</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Build GIMPACTUtils extra module, only applied when BUILD_EXTRAS <br> is ON</td>
+<td style="text-align:left">BUILD</td>
+<td style="text-align:left">BUILD_GIMPACTUTILS_EXTRA</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Build HACD extra module, only applied when BUILD_EXTRAS is ON</td>
+<td style="text-align:left">BUILD</td>
+<td style="text-align:left">BUILD_HACD_EXTRA</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Build InverseDynamic extra module, only applied when BUILD_EXTRAS <br> is ON</td>
+<td style="text-align:left">BUILD</td>
+<td style="text-align:left">BUILD_INVERSE_DYNAMIC_EXTRA</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Build obj2sdf extra module, only applied when BUILD_EXTRAS is ON</td>
+<td style="text-align:left">BUILD</td>
+<td style="text-align:left">BUILD_OBJ2SDF_EXTRA</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Set when you want to build Bullet 3 OpenGL3+ demos</td>
+<td style="text-align:left">BUILD</td>
+<td style="text-align:left">BUILD_OPENGL3_DEMOS</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Set when you want to build pybullet (Python bindings for Bullet)</td>
+<td style="text-align:left">BUILD</td>
+<td style="text-align:left">BUILD_PYBULLET</td>
+<td style="text-align:left">OFF</td>
+</tr>
+<tr>
+<td style="text-align:left">Build Serialize extra module, only applied when BUILD_EXTRAS <br> is ON</td>
+<td style="text-align:left">BUILD</td>
+<td style="text-align:left">BUILD_SERIALIZE_EXTRA</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Use shared libraries</td>
+<td style="text-align:left">BUILD</td>
+<td style="text-align:left">BUILD_SHARED_LIBS</td>
+<td style="text-align:left">OFF</td>
+</tr>
+<tr>
+<td style="text-align:left">Build Unit Tests</td>
+<td style="text-align:left">BUILD</td>
+<td style="text-align:left">BUILD_UNIT_TESTS</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Value Computed by CMake</td>
+<td style="text-align:left">BULLET</td>
+<td style="text-align:left">BULLET_PHYSICS_BINARY_DIR</td>
+<td style="text-align:left">&lt;where-cloned-bullet&gt;/bullet3/build</td>
+</tr>
+<tr>
+<td style="text-align:left">Value Computed by CMake</td>
+<td style="text-align:left">BULLET</td>
+<td style="text-align:left">BULLET_PHYSICS_SOURCE_DIR</td>
+<td style="text-align:left">&lt;where-cloned-bullet&gt;/bullet3</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>The CLSOCKET Group</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Group</th>
+<th style="text-align:left">Key</th>
+<th style="text-align:left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Build for use inside other CMake projects as dependency.</td>
+<td style="text-align:left">CLSOCKET</td>
+<td style="text-align:left">CLSOCKET_DEP_ONLY</td>
+<td style="text-align:left">OFF</td>
+</tr>
+<tr>
+<td style="text-align:left">Build clsocket lib as shared.</td>
+<td style="text-align:left">CLSOCKET</td>
+<td style="text-align:left">CLSOCKET_SHARED</td>
+<td style="text-align:left">OFF</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>The CMAKE Group</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Group</th>
+<th style="text-align:left">Key</th>
+<th style="text-align:left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Path to a program.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_AR</td>
+<td style="text-align:left">PATHC:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.28.29333/bin/Hostx64/x64/lib.exe</td>
+</tr>
+<tr>
+<td style="text-align:left">For backwards compatibility, what version of CMake commands and<br> syntax should this version of CMake try to support.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_BACKWARDS_COMPATIBILITY</td>
+<td style="text-align:left">2.4</td>
+</tr>
+<tr>
+<td style="text-align:left">Semicolon separated list of supported configuration types, only <br> supports Debug, Release, MinSizeRel, and RelWithDebInfo, anything <br> else will be ignored.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_CONFIGURATION_TYPES</td>
+<td style="text-align:left">Debug;Release;MinSizeRel;RelWithDebInfo</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the CXX compiler during all build types.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_CXX_FLAGS</td>
+<td style="text-align:left">/DWIN32 /D_WINDOWS /W3 /GR /EHsc</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the CXX compiler during DEBUG builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_CXX_FLAGS_DEBUG</td>
+<td style="text-align:left">/MDd /Zi /Ob0 /Od /RTC1</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the CXX compiler during MINSIZEREL builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_CXX_FLAGS_MINSIZEREL</td>
+<td style="text-align:left">/MD /O1 /Ob1 /DNDEBUG</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the CXX compiler during RELEASE builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_CXX_FLAGS_RELEASE</td>
+<td style="text-align:left">/MD /O2 /Ob2 /DNDEBUG</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the CXX compiler during RELWITHDEBINFO builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_CXX_FLAGS_RELWITHDEBINFO</td>
+<td style="text-align:left">/MD /Zi /O2 /Ob1 /DNDEBUG</td>
+</tr>
+<tr>
+<td style="text-align:left">Libraries linked by default with all C++ applications.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_CXX_STANDARD_LIBRARIES</td>
+<td style="text-align:left">kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the C compiler during all build types.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_C_FLAGS</td>
+<td style="text-align:left">/DWIN32 /D_WINDOWS /W3</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the C compiler during DEBUG builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_C_FLAGS_DEBUG</td>
+<td style="text-align:left">/MDd /Zi /Ob0 /Od /RTC1</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the C compiler during MINSIZEREL builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_C_FLAGS_MINSIZEREL</td>
+<td style="text-align:left">/MD /O1 /Ob1 /DNDEBUG</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the C compiler during RELEASE builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_C_FLAGS_RELEASE</td>
+<td style="text-align:left">/MD /O2 /Ob2 /DNDEBUG</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the C compiler during RELWITHDEBINFO builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_C_FLAGS_RELWITHDEBINFO</td>
+<td style="text-align:left">/MD /Zi /O2 /Ob1 /DNDEBUG</td>
+</tr>
+<tr>
+<td style="text-align:left">Libraries linked by default with all C applications.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_C_STANDARD_LIBRARIES</td>
+<td style="text-align:left">kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib</td>
+</tr>
+<tr>
+<td style="text-align:left">Adds a postfix for debug-built libraries.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_DEBUG_POSTFIX</td>
+<td style="text-align:left">_Debug</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the linker during all build types.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_EXE_LINKER_FLAGS</td>
+<td style="text-align:left">/machine:x64</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the linker during DEBUG builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_EXE_LINKER_FLAGS_DEBUG</td>
+<td style="text-align:left">/debug /INCREMENTAL</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the linker during MINSIZEREL builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_EXE_LINKER_FLAGS_MINSIZEREL</td>
+<td style="text-align:left">/INCREMENTAL:NO</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the linker during RELEASE builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_EXE_LINKER_FLAGS_RELEASE</td>
+<td style="text-align:left">/INCREMENTAL:NO</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the linker during RELWITHDEBINFO builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO</td>
+<td style="text-align:left">/debug /INCREMENTAL</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Install path prefix, prepended onto install directories.</strong></td>
+<td style="text-align:left"><strong>CMAKE</strong></td>
+<td style="text-align:left"><strong>CMAKE_INSTALL_PREFIX</strong></td>
+<td style="text-align:left"><strong>&lt;where-cloned-bullet&gt;/bullet3/build/sdk</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">Path to a program.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_LINKER</td>
+<td style="text-align:left">C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.28.29333/bin/Hostx64/x64/link.exe</td>
+</tr>
+<tr>
+<td style="text-align:left">Adds a postfix for MinsizeRelease-built libraries.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_MINSIZEREL_POSTFIX</td>
+<td style="text-align:left">_MinsizeRel</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the linker during the creation of modules during<br> all build types.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_MODULE_LINKER_FLAGS</td>
+<td style="text-align:left">/machine:x64</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the linker during the creation of modules during<br> DEBUG builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_MODULE_LINKER_FLAGS_DEBUG</td>
+<td style="text-align:left">/debug /INCREMENTAL</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the linker during the creation of modules during<br> MINSIZEREL builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_MODULE_LINKER_FLAGS_MINSIZEREL</td>
+<td style="text-align:left">/INCREMENTAL:NO</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the linker during the creation of modules during<br> RELEASE builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_MODULE_LINKER_FLAGS_RELEASE</td>
+<td style="text-align:left">/INCREMENTAL:NO</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the linker during the creation of modules during<br> RELWITHDEBINFO builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO</td>
+<td style="text-align:left">/debug /INCREMENTAL</td>
+</tr>
+<tr>
+<td style="text-align:left">Path to a program.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_MT</td>
+<td style="text-align:left">PATH</td>
+</tr>
+<tr>
+<td style="text-align:left">Value Computed by CMake</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_PROJECT_DESCRIPTION</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Value Computed by CMake</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_PROJECT_HOMEPAGE_URL</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Value Computed by CMake</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_PROJECT_NAME</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">RC compiler</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_RC_COMPILER</td>
+<td style="text-align:left">PATHrc</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags for Windows Resource Compiler during all build types.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_RC_FLAGS</td>
+<td style="text-align:left">-DWIN32</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags for Windows Resource Compiler during DEBUG builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_RC_FLAGS_DEBUG</td>
+<td style="text-align:left">-D_DEBUG</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags for Windows Resource Compiler during MINSIZEREL builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_RC_FLAGS_MINSIZEREL</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Flags for Windows Resource Compiler during RELEASE builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_RC_FLAGS_RELEASE</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Flags for Windows Resource Compiler during RELWITHDEBINFO builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_RC_FLAGS_RELWITHDEBINFO</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Adds a postfix for ReleaseWithDebug-built libraries.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_RELWITHDEBINFO_POSTFIX</td>
+<td style="text-align:left">_RelWithDebugInfo</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the linker during the creation of shared libraries<br> during all build types.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_SHARED_LINKER_FLAGS</td>
+<td style="text-align:left">/machine:x64</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the linker during the creation of shared libraries<br> during DEBUG builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_SHARED_LINKER_FLAGS_DEBUG</td>
+<td style="text-align:left">/debug /INCREMENTAL</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the linker during the creation of shared libraries<br> during MINSIZEREL builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_SHARED_LINKER_FLAGS_MINSIZEREL</td>
+<td style="text-align:left">/INCREMENTAL:NO</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the linker during the creation of shared libraries<br> during RELEASE builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_SHARED_LINKER_FLAGS_RELEASE</td>
+<td style="text-align:left">/INCREMENTAL:NO</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the linker during the creation of shared libraries<br> during RELWITHDEBINFO builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFO</td>
+<td style="text-align:left">/debug /INCREMENTAL</td>
+</tr>
+<tr>
+<td style="text-align:left">If set, runtime <br> paths are not added when installing shared libraries,<br> but are added when building.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_SKIP_INSTALL_RPATH</td>
+<td style="text-align:left">OFF</td>
+</tr>
+<tr>
+<td style="text-align:left">If set, runtime paths are not added when using shared libraries.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_SKIP_RPATH</td>
+<td style="text-align:left">OFF</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the linker during the creation of static libraries<br> during all build types.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_STATIC_LINKER_FLAGS</td>
+<td style="text-align:left">/machine:x64</td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the linker during the creation of static libraries<br> during DEBUG builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_STATIC_LINKER_FLAGS_DEBUG</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the linker during the creation of static libraries<br> during MINSIZEREL builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_STATIC_LINKER_FLAGS_MINSIZEREL</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the linker during the creation of static libraries<br> during RELEASE builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_STATIC_LINKER_FLAGS_RELEASE</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Flags used by the linker during the creation of static libraries<br> during RELWITHDEBINFO builds.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">If this value is on, makefiles will be generated without the <br> .SILENT directive, and all commands will be echoed to the console <br> during the make.  This is useful for debugging only. With Visual <br> Studio IDE projects all commands are done without /nologo.</td>
+<td style="text-align:left">CMAKE</td>
+<td style="text-align:left">CMAKE_VERBOSE_MAKEFILE</td>
+<td style="text-align:left">OFF</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>The INSTALL Group</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Group</th>
+<th style="text-align:left">Key</th>
+<th style="text-align:left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Install generated CMake files</strong></td>
+<td style="text-align:left"><strong>CMAKE</strong></td>
+<td style="text-align:left"><strong>INSTALL_CMAKE_FILES</strong></td>
+<td style="text-align:left"><strong>ON</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Set when you want extra libraries installed</strong></td>
+<td style="text-align:left"><strong>INSTALL</strong></td>
+<td style="text-align:left"><strong>INSTALL_EXTRA_LIBS</strong></td>
+<td style="text-align:left"><strong>ON</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Set when you want to install libraries</strong></td>
+<td style="text-align:left"><strong>INSTALL</strong></td>
+<td style="text-align:left"><strong>INSTALL_LIBS</strong></td>
+<td style="text-align:left"><strong>ON</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>The INTERNAL Group</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Group</th>
+<th style="text-align:left">Key</th>
+<th style="text-align:left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Add MSVC postfix for executable names (_Debug)</td>
+<td style="text-align:left">INTERNAL</td>
+<td style="text-align:left">INTERNAL_ADD_POSTFIX_EXECUTABLE_NAMES</td>
+<td style="text-align:left">OFF</td>
+</tr>
+<tr>
+<td style="text-align:left">Create MSVC projectfiles that can be distributed</td>
+<td style="text-align:left">INTERNAL</td>
+<td style="text-align:left">INTERNAL_CREATE_DISTRIBUTABLE_MSVC_PROJECTFILES</td>
+<td style="text-align:left">OFF</td>
+</tr>
+<tr>
+<td style="text-align:left">Create MSVC projectfiles with relative paths</td>
+<td style="text-align:left">INTERNAL</td>
+<td style="text-align:left">INTERNAL_CREATE_MSVC_RELATIVE_PATH_PROJECTFILES</td>
+<td style="text-align:left">OFF</td>
+</tr>
+<tr>
+<td style="text-align:left">Internal update serialization structures</td>
+<td style="text-align:left">INTERNAL</td>
+<td style="text-align:left">INTERNAL_UPDATE_SERIALIZATION_STRUCTURES</td>
+<td style="text-align:left">OFF</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The OpenGL Group</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Group</th>
+<th style="text-align:left">Key</th>
+<th style="text-align:left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">OpenGL library for win32</td>
+<td style="text-align:left">OPENGL</td>
+<td style="text-align:left">OPENGL_gl_LIBRARY</td>
+<td style="text-align:left">opengl32</td>
+</tr>
+<tr>
+<td style="text-align:left">GLU library for win32</td>
+<td style="text-align:left">OPENGL</td>
+<td style="text-align:left">OPENGL_glu_LIBRARY</td>
+<td style="text-align:left">glu32</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The USE Group</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Group</th>
+<th style="text-align:left">Key</th>
+<th style="text-align:left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Use double precision</td>
+<td style="text-align:left">USE</td>
+<td style="text-align:left">USE_DOUBLE_PRECISION</td>
+<td style="text-align:left">OFF</td>
+</tr>
+<tr>
+<td style="text-align:left">Use Glut</td>
+<td style="text-align:left">USE</td>
+<td style="text-align:left">USE_GLUT</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Use Graphical Benchmark</td>
+<td style="text-align:left">USE</td>
+<td style="text-align:left">USE_GRAPHICAL_BENCHMARK</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Compile your program with AVX instructions</td>
+<td style="text-align:left">USE</td>
+<td style="text-align:left">USE_MSVC_AVX</td>
+<td style="text-align:left">OFF</td>
+</tr>
+<tr>
+<td style="text-align:left">Use MSVC /OPT:ICF COMDAT folding option</td>
+<td style="text-align:left">USE</td>
+<td style="text-align:left">USE_MSVC_COMDAT_FOLDING</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Use MSVC /GR- disabled RTTI flags option</td>
+<td style="text-align:left">USE</td>
+<td style="text-align:left">USE_MSVC_DISABLE_RTTI</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Use MSVC C++ exceptions option</td>
+<td style="text-align:left">USE</td>
+<td style="text-align:left">USE_MSVC_EXEPTIONS</td>
+<td style="text-align:left">OFF</td>
+</tr>
+<tr>
+<td style="text-align:left">Use MSVC /fp:fast option</td>
+<td style="text-align:left">USE</td>
+<td style="text-align:left">USE_MSVC_FAST_FLOATINGPOINT</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Use MSVC /Gy function level linking option</td>
+<td style="text-align:left">USE</td>
+<td style="text-align:left">USE_MSVC_FUNCTION_LEVEL_LINKING</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Use MSVC Incremental Linking</td>
+<td style="text-align:left">USE</td>
+<td style="text-align:left">USE_MSVC_INCREMENTAL_LINKING</td>
+<td style="text-align:left">OFF</td>
+</tr>
+<tr>
+<td style="text-align:left">Use MSVC Release Runtime Library even in Debug</td>
+<td style="text-align:left">USE</td>
+<td style="text-align:left">USE_MSVC_RELEASE_RUNTIME_ALWAYS</td>
+<td style="text-align:left">OFF</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Use MSVC Runtime Library DLL (/MD or /MDd)</strong></td>
+<td style="text-align:left"><strong>USE</strong></td>
+<td style="text-align:left"><strong>USE_MSVC_RUNTIME_LIBRARY_DLL</strong></td>
+<td style="text-align:left"><strong>ON</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">Use MSVC /GF string pooling option</td>
+<td style="text-align:left">USE</td>
+<td style="text-align:left">USE_MSVC_STRING_POOLING</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Use OpenVR for virtual reality</td>
+<td style="text-align:left">USE</td>
+<td style="text-align:left">USE_OPENVR</td>
+<td style="text-align:left">OFF</td>
+</tr>
+<tr>
+<td style="text-align:left">Use btSoftMultiBodyDynamicsWorld</td>
+<td style="text-align:left">USE</td>
+<td style="text-align:left">USE_SOFT_BODY_MULTI_BODY_DYNAMICS_WORLD</td>
+<td style="text-align:left">ON</td>
+</tr>
+<tr>
+<td style="text-align:left">Dependencies for the target</td>
+<td style="text-align:left">clsocket</td>
+<td style="text-align:left">clsocket_LIB_DEPENDS</td>
+<td style="text-align:left">general;Ws2_32.lib;</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
